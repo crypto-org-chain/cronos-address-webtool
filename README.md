@@ -1,5 +1,10 @@
 # address-transverter
 
+## Description
+
+This repository is used for address convert, you can convert ETH address to Crypto Mainnet/Cronos/Croeseid address.
+
+
 ## Project setup
 ```
 npm install
@@ -20,5 +25,3 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

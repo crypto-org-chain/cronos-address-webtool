@@ -8,8 +8,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@crypto-org-chain/chain-jslib": "^1.0.2",
+    "bech32": "^2.0.0",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "keccak": "^3.0.2",
+    "vue": "^2.6.11",
+    "ant-design-vue": "^1.7.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -18,7 +22,11 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "sass-loader": "^9.0.3",
+    "css-loader": "^0.28.11",
+    "less-loader": "^4.1.0",
+    "node-sass": "^4.14.1"
   },
   "eslintConfig": {
     "root": true,
@@ -32,7 +40,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": [
     "> 1%",
