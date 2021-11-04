@@ -21,10 +21,7 @@
           <div class="address">eth: {{ ethAddress }}</div>
         </div>
         <div class="result-detail">
-          <div class="address">cro: {{ croAddress }}</div>
-        </div>
-        <div class="result-detail">
-          <div class="address">tcro: {{ tcroAddress }}</div>
+          <div class="address">crc: {{ crcAddress }}</div>
         </div>
         <div class="result-detail">
           <div class="address">tcrc: {{ tcrcAddress }}</div>
@@ -45,8 +42,7 @@ export default {
       isPc: this.$isPc(),
       address: '',
       ethAddress: '',
-      tcroAddress: '',
-      croAddress: '',
+      crcAddress: '',
       tcrcAddress: '',
       loading: false,
 
@@ -69,13 +65,11 @@ export default {
         const toHexString = bytes =>
             bytes.reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '');
         this.ethAddress = this.toChecksumAddress(toHexString(new Uint8Array(words)))
-        this.croAddress = bech32.encode('cro', decodeData.words);
-        this.tcroAddress = bech32.encode('tcro', decodeData.words);
+        this.crcAddress = bech32.encode('crc', decodeData.words);
         this.tcrcAddress = bech32.encode('tcrc', decodeData.words);
       } else {
         this.ethAddress = this.address.startsWith('0x')? this.address: `0x${this.address}`
-        this.croAddress = sdk.utils.convertEVMAddressToBech32Address(this.address, 'cro')
-        this.tcroAddress = sdk.utils.convertEVMAddressToBech32Address(this.address, 'tcro')
+        this.crcAddress = sdk.utils.convertEVMAddressToBech32Address(this.address, 'crc')
         this.tcrcAddress = sdk.utils.convertEVMAddressToBech32Address(this.address, 'tcrc')
       }
     },
