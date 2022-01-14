@@ -23,6 +23,9 @@
         <div class="result-detail">
           <div class="address">crc: {{ crcAddress }}</div>
         </div>
+<!--        <div class="result-detail">-->
+<!--          <div class="address">cro: {{ croAddress }}</div>-->
+<!--        </div>-->
         <div class="result-detail">
           <div class="address">tcrc: {{ tcrcAddress }}</div>
         </div>
@@ -43,6 +46,7 @@ export default {
       address: '',
       ethAddress: '',
       crcAddress: '',
+      croAddress: '',
       tcrcAddress: '',
       loading: false,
 
@@ -60,17 +64,19 @@ export default {
       }
 
       try {
-        if(this.address.startsWith('tcrc') || this.address.startsWith('tcro') || this.address.startsWith('cro')) {
+        if(this.address.startsWith('tcrc') || this.address.startsWith('tcro') || this.address.startsWith('cro') || this.address.startsWith('crc')) {
           const decodeData = bech32.decode(this.address)
           const words = bech32.fromWords(decodeData.words)
           const toHexString = bytes =>
               bytes.reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '');
           this.ethAddress = this.toChecksumAddress(toHexString(new Uint8Array(words)))
           this.crcAddress = bech32.encode('crc', decodeData.words);
+          this.croAddress = bech32.encode('cro', decodeData.words);
           this.tcrcAddress = bech32.encode('tcrc', decodeData.words);
         } else {
           this.ethAddress = this.address.startsWith('0x')? this.address: `0x${this.address}`
           this.crcAddress = sdk.utils.convertEVMAddressToBech32Address(this.address, 'crc')
+          this.croAddress = sdk.utils.convertEVMAddressToBech32Address(this.address, 'cro')
           this.tcrcAddress = sdk.utils.convertEVMAddressToBech32Address(this.address, 'tcrc')
         }
       } catch (e) {
