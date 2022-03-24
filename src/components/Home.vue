@@ -64,7 +64,7 @@ export default {
       }
 
       try {
-        if(this.address.startsWith('tcrc') || this.address.startsWith('tcro') || this.address.startsWith('cro') || this.address.startsWith('crc')) {
+        if(this.address.startsWith('tcrc') || this.address.startsWith('tcro') || this.address.startsWith('cro') || this.address.startsWith('crc') || this.address.startsWith('ethm')) {
           const decodeData = bech32.decode(this.address)
           const words = bech32.fromWords(decodeData.words)
           const toHexString = bytes =>
